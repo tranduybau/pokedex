@@ -13,7 +13,7 @@ module.exports = {
     indent: 0,
     "import/extensions": 0,
     "import/extensions": 0,
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
   },
   parserOptions: {
     parser: 'babel-eslint',

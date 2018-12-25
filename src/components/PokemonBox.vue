@@ -1,13 +1,39 @@
 <template>
-  <div>
-    <b-col cols="4">
-      <b-card title="Pokemon Info" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image"
+    <b-col cols="3">
+      <b-card title="Pokemon Info" :img-src="url" img-alt="Image"
       img-top tag="article" style="max-width: 20rem;" class="mb-2">
         <p class="card-text">
-          {{ name }}
+          {{ pokemon.name }}
         </p>
-        <b-button to="/" variant="primary">Go back to home</b-button>
+        <b-button :to="`/pokemon/${this.id}`" variant="primary">Check more infomation</b-button>
       </b-card>
     </b-col>
-  </div>
 </template>
+
+<script>
+  export default {
+    name: 'PokemonBox',
+    props: {
+      id: Number,
+      pokemon: {
+        default: {},
+        type: Object,
+      },
+    },
+    computed: {
+      url: function () {
+        if (this.id < 808) {
+          return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.id}.png`;
+        } else {
+          return 'https://cdn.dribbble.com/users/1644328/screenshots/3662108/800x600.jpg';
+        }
+      },
+    },
+  };
+</script>
+
+<style scoped>
+  .card-text {
+    text-transform: capitalize;
+  }
+</style>

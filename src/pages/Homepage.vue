@@ -1,10 +1,14 @@
 <template>
     <div class="container">
-        <h1>Pokedex</h1>
-        <search-machine />
-        <loading />
+        <loading v-if="pokemonsState.isLoading" />
+        <div v-else>
+            <h1>Pokedex</h1>
+            <search-machine />
+            <div class="row">
+                <pokemon-box v-for="(pokemon, index) in pokemonsState.pokemons" :key="index" :id="index +1" :pokemon="pokemon" />
+            </div>
+        </div>
         <alert />
-        <pokemon-box />
     </div>
 </template>
 
@@ -23,7 +27,12 @@
         },
         created() {
             this.$store.dispatch(GET_POKEMONS);
-        }
+        },
+        computed: {
+            pokemonsState: function () {
+                return this.$store.state.pokemonsState;
+            },
+        },
     };
 </script>
 

@@ -19,8 +19,6 @@ export default {
   state: defaultState,
   actions: {
     [GET_POKEMON]: ({ commit }, pokemonId) => {
-      let error;
-
       commit(GET_POKEMON_PENDING);
 
       fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
@@ -31,6 +29,10 @@ export default {
   },
   mutations: {
     [GET_POKEMON_SUCCSESS]: (state, pokemon) => {
+      setTimeout(() => {
+        state.isLoading = false;
+      }, 4000);
+
       state.response = {
         isShow: false,
         type: 'success',
@@ -38,7 +40,6 @@ export default {
       };
 
       state.pokemon = pokemon;
-      state.isLoading = false;
     },
     [GET_POKEMON_FAILED]: (state, error) => {
       state.response = {

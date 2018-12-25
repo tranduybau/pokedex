@@ -7,11 +7,10 @@ import {
   SEARCH_POKEMON_FAILED,
   SEARCH_POKEMON_PENDING,
   SEARCH_POKEMON_SUCCSESS,
-  GET_POKEMON_PENDING,
 } from '../actionTypes';
 
 const defaultState = {
-  pokemons: {},
+  pokemons: [],
   response: {
     type: 'primary',
     isShow: false,
@@ -24,7 +23,7 @@ export default {
   state: defaultState,
   actions: {
     [GET_POKEMONS]: ({ commit }) => {
-      commit(GET_POKEMON_PENDING);
+      commit(GET_POKEMONS_PENDING);
 
       fetch('https://pokeapi.co/api/v2/pokemon')
         .then(res => res.json())
@@ -49,9 +48,13 @@ export default {
       };
 
       state.pokemons = pokemons;
-      state.isLoading = false;
+      setTimeout(() => {
+        state.isLoading = false;
+      }, 4000);
     },
     [GET_POKEMONS_PENDING]: (state) => {
+      console.warn('here waiting for you');
+
       state.isLoading = true;
     },
     [GET_POKEMONS_FAILED]: (state, error) => {
