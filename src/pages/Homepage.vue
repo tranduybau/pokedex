@@ -5,7 +5,11 @@
             <h1>Pokedex</h1>
             <search-machine />
             <div class="row">
-                <pokemon-box v-for="(pokemon, index) in pokemonsState.pokemons" :key="index" :id="index +1" :pokemon="pokemon" />
+                <pokemon-box 
+                    v-for="(pokemon, index) in pokemonsState.pokemons"
+                    :key="index"
+                    :id="index +1"
+                    :pokemon="pokemon" />
             </div>
         </div>
         <alert />

@@ -53,8 +53,6 @@ export default {
       }, 4000);
     },
     [GET_POKEMONS_PENDING]: (state) => {
-      console.warn('here waiting for you');
-
       state.isLoading = true;
     },
     [GET_POKEMONS_FAILED]: (state, error) => {

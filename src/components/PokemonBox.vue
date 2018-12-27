@@ -24,9 +24,9 @@
       url: function () {
         if (this.id < 808) {
           return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.id}.png`;
-        } else {
-          return 'https://cdn.dribbble.com/users/1644328/screenshots/3662108/800x600.jpg';
         }
+
+        return 'https://cdn.dribbble.com/users/1644328/screenshots/3662108/800x600.jpg';
       },
     },
   };
