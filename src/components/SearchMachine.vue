@@ -1,12 +1,10 @@
 <template>
   <div class="">
-    <form>
-      <div class="form-group">
+    <div class="form-group">
         <label for="exampleInputEmail1">Pokemon's Id/Name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" v-model="keySearch">
-      </div>
-      <button type="submit" class="btn btn-primary" @click="onSearch">Submit</button>
-    </form>
+      <input type="text" class="form-control" id="exampleInputEmail1" v-model="keySearch">
+    </div>
+    <button type="submit" class="btn btn-primary" @click="onSearch">Submit</button>
   </div>
 </template>
 <script>
@@ -38,7 +36,7 @@ export default {
         return;
       }
 
-      this.$store.dispatch(SEARCH_POKEMON, this.ketSearch.toLowerCase());
+      this.$store.dispatch(SEARCH_POKEMON, this.keySearch.toLowerCase());
     }
   }
 };

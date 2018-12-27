@@ -31,7 +31,7 @@ export default {
         .catch(error => commit(GET_POKEMONS_FAILED, error.message));
     },
     [SEARCH_POKEMON]: ({ commit }, pokemonId) => {
-      commit(SEARCH_POKEMON);
+      commit(SEARCH_POKEMON_PENDING);
 
       fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
         .then(res => res.json())
